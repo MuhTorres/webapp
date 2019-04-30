@@ -1,0 +1,51 @@
+body, html{
+	margin:0;
+	padding:0;
+}
+
+@media screen and (max-width: 700px) {
+	.sidebar, .content-inner, .content{
+		float: none;
+		width: 100%;
+		margin-right:0;
+	}
+}
+img {
+  
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+form {
+  position: relative;
+  padding: 10px 0;
+}
+.botao{
+       background-color:#DDDDDD;
+                /* float: left; */
+       border: none;
+       /* outline: none; */
+       /* cursor: pointer; */
+       padding: 10px 10px;
+       transition: 0.3s;                 
+   }
+   /* Passos intermediários na animação*/
+   @keyframes aparecerSuave {
+       from {opacity: 0.5;}
+       to {opacity: 1;}
+   }
+   .conteudo{
+       background-color: #DDDDDD;
+       width: 50%;
+       margin-top:0;
+       border-top:none;
+       animation: aparecerSuave 2s; 
+
+   }
+   .invisivel{
+       display:none;
+   }
+   .visivel{
+       display:box;
+   }
