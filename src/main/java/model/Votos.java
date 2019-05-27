@@ -1,0 +1,35 @@
+package model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity(name="VOTOS")
+public class Votos 
+{
+	@Id
+	@Column(name = "VOTO_ID")
+	private int id;
+
+	@Column(name = "USER_ID")
+	private String titulo;
+
+	@Column(name = "CAND_ID")
+	private int candidato;
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public int getCandidato() {
+		return candidato;
+	}
+
+	public void setCandidato(int candidato) {
+		this.candidato = candidato;
+	}	
+}

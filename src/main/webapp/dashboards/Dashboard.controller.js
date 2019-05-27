@@ -1,4 +1,4 @@
- window.onload = function()
+window.onload = function()
  {
 	 btnVotar = document.getElementById('btnVotar');
 	 btnLiberar = document.getElementById('btnLiberar');

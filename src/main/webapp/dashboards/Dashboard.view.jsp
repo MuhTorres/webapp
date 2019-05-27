@@ -12,21 +12,22 @@ and open the template in the editor.
         <link rel="stylesheet" href="../css/styles.css" type="text/css"/>
         <script type='text/javascript' src='Dashboard.controller.js'></script>
     </head>
+    
     <body>
     <div class="tab">
         <button id=btnVotar class="botao">Votar</button>
         <button id=btnLiberar class="botao">Liberar candidato</button>
-        <button id=btnRelatorio class="botao">Relatório de sessão</button>
+        <button id=btnRelatorio class="botao">Relatorio de se�ao</button>
     </div>
         <div id=votar class="conteudo">            
             <form>            
-                <label> Número do candidato </label>
+                <label> Numero do candidato </label>
                 <input id=idCandidato type="text"/>
                 <button>CONFIRMA</button>
 				<button>CORRIGE</button>
 				<button>BRANCO</button>
 				
-                <img src="../dilmae.jpg" alt="Candidato" align="botton">
+                <img src="../51.jpg" alt="Candidato" align="Right">
             </form>
         </div>
         <div id=liberar class="conteudo">
