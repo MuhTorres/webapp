@@ -336,5 +336,3 @@ ASALocalRun/
 build/
 gradle/
 gradlew.bat
-build.gradle
-settings.gradle
