@@ -3,21 +3,23 @@
 	<head>
 		<meta charset="UTF-8">		
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <link rel="stylesheet" href="css/styles.css" type="text/css"/>        
+        <link rel="stylesheet" href="css/styles.css" type="text/css"/>  
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="./services/service.js"></script>    
 		<title>Justica Eleitoral</title>
 		</head>
 	<body>
-		<form id=login action="/Eleicao/login" method="post">
+		<form id=login action="" method="post" class="container">
             <h1>Justica Eleitoral</h1>
             <div class="login">
               <label>Titulo de Eleitor</label>
-                <input type="text" name="tEleitor" id="titulo" required/>
+                <input type="text" name="titulo" id="titulo" required/>
             </div>            
             <div class="login">
               <label>Senha</label>
-              <input type="password" name="senha" id="pwd" required/>
+              <input type="password" name="senha" id="senha" required/>
             </div>
-            <button>Entrar</button>
+            <button class="confirm" onclick="autenticar()"">Entrar</button>
             </form>
 	</body>
 </html>

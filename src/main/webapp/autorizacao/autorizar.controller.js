@@ -1,19 +1,13 @@
-function autorizar()
-{
-    var that = this;
-    var value = 
-    {
-        titulo: "123456",
-        autBy: "654321"
-    };
-    authorize({
-        data: value,
-        scope: that.document,
-        failure: function (xhr, status, error) {
-            alert(treatError.getErrorMsg(xhr, status, error));
-        },
-        success: function (data) {
-            alert("O usuário foi autorizado! " + data.nome);
-        }
+window.addEventListener("load", function(event) {
+    var query = location.search.slice(1);
+    var partes = query.split('&');
+    var data = {};
+    partes.forEach(function (parte) {
+        var chaveValor = parte.split('=');
+        var chave = chaveValor[0];
+        var valor = chaveValor[1];
+        data[chave] = valor;
     });
-};
+    document.getElementById('func').value = data.titulo;
+    document.getElementById('nivel').value = data.nivel;
+  });

@@ -25,7 +25,7 @@
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     
-    <mapping class="model.Log" />
+    <mapping class="model.LogInfo" />
     <mapping class="model.Usuario" />
     <mapping class="model.Authorization" />
     <mapping class="model.Votos" />

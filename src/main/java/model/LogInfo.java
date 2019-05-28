@@ -9,10 +9,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name="log")
+@Entity(name="LOG")
 public class LogInfo
-{
-	
+{	
 	@Id
 	@Column(name = "LOG_ID")
 	private String logId;
@@ -22,7 +21,6 @@ public class LogInfo
 
 	@Column(name = "ACTION_TIME")
 	private String actionTime;
-
 
 	@Column(name = "ACTION_DATE")
 	private String actionDate;
@@ -52,7 +50,7 @@ public class LogInfo
 	}
 
 	public void setActionTime() {
-		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		this.actionTime = dateFormat.format(date);
 	}
