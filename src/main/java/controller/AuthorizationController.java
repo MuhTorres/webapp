@@ -1,9 +1,12 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import com.google.gson.Gson;
+
+import dao.AutDao;
+import dao.UsuarioDao;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Authorization;
-import model.GenericDao;
 import model.Usuario;
 
 @WebServlet("/autorizar")
@@ -26,7 +28,20 @@ public class AuthorizationController extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		String titulo = request.getParameter("titulo");
+		Gson gson = new Gson();		
 		
+		UsuarioDao uDao = new UsuarioDao();
+		Usuario user = uDao.find(titulo);
+		
+		response.setStatus(HttpServletResponse.SC_OK);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");	
+		//PrintWriter writer = response.getWriter();
+		String jsonInString = gson.toJson(user);
+		request.setAttribute("usuario", user.getNome());
+		request.setAttribute("data", jsonInString);
+		response.getWriter().print(jsonInString);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -35,7 +50,7 @@ public class AuthorizationController extends HttpServlet
 		String titulo = request.getParameter("titulo");
 		String autBy = request.getParameter("autBy");
 		
-		GenericDao dao = new GenericDao();
+		UsuarioDao dao = new UsuarioDao();
 		List<Authorization> auts = dao.findAllAut();
 		int varPassagem = 0;
 		for(Authorization aut : auts)
@@ -43,7 +58,7 @@ public class AuthorizationController extends HttpServlet
 			if(aut.getTitulo().equals(titulo))
 			{
 				//response.setContentType("application/json");
-				Usuario user = dao.findUser(titulo);
+				Usuario user = dao.find(titulo);
 				
 				varPassagem = 1;
 				response.setStatus(HttpServletResponse.SC_OK);

@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="./votar/styles.css" type="text/css"/>
-<script type="text/javascript" src="./votar/votacao.controller.js"></script>
+<link rel="stylesheet" href="../css/styles.css" type="text/css"/>
+<script type="text/javascript" src="./votacao.controller.js"></script>
 <title>Votacao</title>
 </head>
 <body>
@@ -22,6 +22,6 @@
     <button class="clear" onclick="clear()">CORRIGE</button>
   </form>
 </div>
-<img id="imgCandidato" src="./votar/images/0.png" alt="Cabo Daciolo" style="width:100%">
+<img id="imgCandidato" src="./images/0.png" alt="Cabo Daciolo" style="width:100%">
 </body>
 </html>

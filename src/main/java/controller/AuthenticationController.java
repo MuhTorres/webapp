@@ -8,10 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import com.google.gson.Gson;
-import model.GenericDao;
-import model.Usuario;
+
+import dao.LogDao;
+import dao.UsuarioDao;
 import model.LogInfo;
+import model.Usuario;
 
 @WebServlet("/login")
 public class AuthenticationController extends HttpServlet 
@@ -34,9 +37,9 @@ public class AuthenticationController extends HttpServlet
 		String titulo = request.getParameter("titulo");
 		String senha = request.getParameter("senha");
 		
-		GenericDao dao = new GenericDao();
-		Usuario user = (Usuario) dao.findUser(titulo);
-		String url = "";
+		UsuarioDao dao = new UsuarioDao();
+		Usuario user = (Usuario) dao.find(titulo);
+
 		if(user != null && user.getSenha().equals(senha))
 		{
 			String descricao = "O usuario de titulo " + titulo + " fez login no sistema com nivel de acesso igual a " + user.getNivel();
@@ -44,42 +47,45 @@ public class AuthenticationController extends HttpServlet
 			{				
 				response.setStatus(HttpServletResponse.SC_OK);
 				//url = "votar/votacao.view.jsp";			
-				saveLog(titulo, descricao, dao);	
+				saveLog(titulo, descricao);	
 				//request.getSession().setAttribute("usuario", user);								
 				//request.getSession().setAttribute("data", jsonInString);
 				String jsonInString = gson.toJson(user);	
 				response.getWriter().print(jsonInString);
+				response.setStatus(HttpServletResponse.SC_OK);
 				response.getWriter().flush();
 			}
 			else if(user.getNivel() == 2)
 			{
-				response.setStatus(HttpServletResponse.SC_OK);
 				//url = "autorizacao/autorizar.view.jsp";		
-				saveLog(titulo, descricao, dao);	
+				saveLog(titulo, descricao);	
 				//request.getSession().setAttribute("usuario", user);									
 				//request.getSession().setAttribute("url", url);
 				String jsonInString = gson.toJson(user);	
 				PrintWriter pw = response.getWriter();
 				pw.print(jsonInString);	
+				response.setStatus(HttpServletResponse.SC_OK);
 				pw.flush();
-			}					
-			dao.CloseConnection();
+			}			
+
+			dao.destroy();
 			titulo = null;
-			url = null;
 			senha = null;
 			user = null;
 			dao = null;
 		}
 	}
 
-	public void saveLog(String titulo, String descricao, GenericDao dao)
+	public void saveLog(String titulo, String descricao)
 	{
+		LogDao lDao = new LogDao();
 		LogInfo log = new LogInfo();
 		log.setActionDate();
 		log.setActionTime();
 		log.setLogId();
 		log.setUserId(titulo);
 		log.setDescription(descricao);
-		dao.saveLog(log);
+		lDao.saveLog(log);
+		lDao.destroy();
 	}
 }

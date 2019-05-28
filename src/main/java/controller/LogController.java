@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.GenericDao;
+import dao.*;
 import model.Usuario;
 
 @WebServlet("/logs")
@@ -30,8 +30,8 @@ public class LogController extends HttpServlet
 		String titulo = request.getParameter("tEleitor");
 		String senha = request.getParameter("senha");
 		
-		GenericDao dao = new GenericDao();
-		Usuario user = (Usuario) dao.findUser(titulo);
+		GenericDao dao = new UsuarioDao();
+		Usuario user = (Usuario) dao.find(titulo);
 		
 		if(user != null && user.getSenha().equals(senha))
 		{

@@ -16,13 +16,16 @@ function doVote(requestData) {
     });
 };
 
-function autorizar() {
-    var usuario = $('#titulo').text();
+function autorizar() {    
+    var usuario = this.document.getElementById('titulo').value;
     var autorizador = '654321';
+    var me = this;
     $.ajax({
           type: 'POST',
           url: '/Eleicao/autorizar',
           data: { titulo: usuario, autBy: autorizador },
+          context: me,
+          async: false,
           beforeSend:function(){
               // this is where we append usually a loading image
           },
@@ -36,18 +39,23 @@ function autorizar() {
 };
 
 function autenticar() {
-    var usuario = this.document.getElementById('titulo').value;
-    var senha = this.document.getElementById('senha').value;
+    var me = this;
+    var usuario = me.document.getElementById('titulo').value;
+    var senha = me.document.getElementById('senha').value;
     $.ajax({
           type: 'POST',
           url: '/Eleicao/login',
           data: { titulo: usuario, senha: senha },
+          //context: me,
+          async: false,
           //beforeSend:function(){
               // this is where we append usually a loading image
           //},
           success: function(data){
-            var obj = JSON.parse(data);            
-            window.location.href = 'http://localhost:8080/Eleicao/autorizacao/autorizar.view.jsp?titulo=' + obj.titulo + '&nivel=' + obj.nivel;
+            var obj = JSON.parse(data);   
+            var url = 'http://localhost:8080/Eleicao/autorizacao/autorizar.view.jsp?titulo=' + obj.titulo + '&nivel=' + obj.nivel;
+            location.href = url;
+            return location.href;
           },
           error: function(error){
               alert(error.status);

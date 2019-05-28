@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../votar/styles.css" type="text/css"/>
+<link rel="stylesheet" href="../css/styles.css" type="text/css"/>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="./autorizar.controller.js"></script>
 <script type="text/javascript" src="../services/service.js"></script>
