@@ -1,19 +1,31 @@
-function doVote(requestData) {
-    var me = this;
-    global.request({
-        type: 'POST',
-        url: String.format('/Eleicao/votar'),
-        data: JSON.stringify(requestData.data),
-        dataType: 'json',
-        context: me,
-        async: false,
-        error: function (xhr, status, error) {
-            requestData.failure.call(requestData.scope, { msg: treatError.getErrorMsg(xhr, status, error) });
-        },
-        success: function (response) {
-            requestData.success.call(requestData.scope, response);
+function url_redirect(url)
+{
+    var X = setTimeout(function()
+    {
+        window.location.replace(url);
+        return true;
+    }, 300);
+
+    if(window.location = url)
+    {
+        clearTimeout(X);
+        return true;
+    } 
+    else 
+    {
+        if( window.location.href = url )
+        {
+            clearTimeout(X);
+            return true;
         }
-    });
+        else
+        {
+            clearTimeout(X);
+            window.location.replace(url);
+            return true;
+        }
+    }
+    return false;
 };
 
 function autorizar() {    
@@ -46,16 +58,18 @@ function autenticar() {
           type: 'POST',
           url: '/Eleicao/login',
           data: { titulo: usuario, senha: senha },
-          //context: me,
+          context: me,
           async: false,
-          //beforeSend:function(){
+          beforeSend:function(){
               // this is where we append usually a loading image
-          //},
+              window.location.href = "https://www.google.com.br";
+          },
           success: function(data){
             var obj = JSON.parse(data);   
-            var url = 'http://localhost:8080/Eleicao/autorizacao/autorizar.view.jsp?titulo=' + obj.titulo + '&nivel=' + obj.nivel;
-            location.href = url;
-            return location.href;
+            //var url = 'http://localhost:8080/Eleicao/autorizacao/autorizar.view.jsp';//?titulo=' + obj.titulo + '&nivel=' + obj.nivel;
+            alert('Bem vindo ' + obj.nome);
+            window.location.href = "http://www.google.com";
+            return false;
           },
           error: function(error){
               alert(error.status);

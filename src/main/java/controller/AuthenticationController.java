@@ -39,33 +39,23 @@ public class AuthenticationController extends HttpServlet
 		
 		UsuarioDao dao = new UsuarioDao();
 		Usuario user = (Usuario) dao.find(titulo);
-
+		
 		if(user != null && user.getSenha().equals(senha))
 		{
 			String descricao = "O usuario de titulo " + titulo + " fez login no sistema com nivel de acesso igual a " + user.getNivel();
 			if(user.getNivel() == 1)
 			{				
-				response.setStatus(HttpServletResponse.SC_OK);
 				//url = "votar/votacao.view.jsp";			
 				saveLog(titulo, descricao);	
-				//request.getSession().setAttribute("usuario", user);								
-				//request.getSession().setAttribute("data", jsonInString);
-				String jsonInString = gson.toJson(user);	
-				response.getWriter().print(jsonInString);
-				response.setStatus(HttpServletResponse.SC_OK);
-				response.getWriter().flush();
+				//String jsonInString = gson.toJson(user);	
+				request.getRequestDispatcher("votar/votacao.view.jsp?titulo=" + user.getTitulo() + "&nivel=" + user.getNivel()).foward(request, response);
 			}
 			else if(user.getNivel() == 2)
 			{
-				//url = "autorizacao/autorizar.view.jsp";		
 				saveLog(titulo, descricao);	
-				//request.getSession().setAttribute("usuario", user);									
-				//request.getSession().setAttribute("url", url);
 				String jsonInString = gson.toJson(user);	
-				PrintWriter pw = response.getWriter();
 				pw.print(jsonInString);	
-				response.setStatus(HttpServletResponse.SC_OK);
-				pw.flush();
+				request.getRequestDispatcher("autorizacao/autorizar.view.jsp?titulo=" + user.getTitulo() + "&nivel=" + user.getNivel()).foward(request, response);
 			}			
 
 			dao.destroy();
