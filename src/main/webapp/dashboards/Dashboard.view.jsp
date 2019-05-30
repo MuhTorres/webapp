@@ -21,7 +21,7 @@
             <button style="display: none;" id="computarVotos" class="other" onclick="redirect('computarVotos')">Computar Votos</button>
 
             <input type="hidden" name="titulo" id="titulo" value="${sessionScope.titulo}"/>
-            <input type="hidden" name="nivel" id="nivel" value="${requestScope.nivel}"/>
+            <input type="hidden" name="nivel" id="nivel" value="${sessionScope.nivel}"/>
             <input type="hidden" name="pagina" id="pagina"/>
           </form>
     </body>
