@@ -52,6 +52,8 @@ public class AuthenticationController extends HttpServlet
 				session.setAttribute("titulo", user.getTitulo());
 				session.setAttribute("nivel", user.getNivel());
 				request.setAttribute("nivel", user.getNivel());
+				
+				session.setMaxInactiveInterval(120);
 				request.getRequestDispatcher("dashboards/Dashboard.view.jsp").forward(request, response);						
 
 			dao.destroy();

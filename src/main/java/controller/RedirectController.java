@@ -32,8 +32,9 @@ public class RedirectController extends HttpServlet
 		HttpSession session = request.getSession();
 		String pagina = request.getParameter("pagina");
         String titulo = (String) session.getAttribute("titulo");
-        saveLog(titulo, "O usuário foi redirecionado para a seguinte url " + pagina);
-
+		saveLog(titulo, "O usuário foi redirecionado para a seguinte url " + pagina);	
+		session.setAttribute("titulo", titulo);
+		session.setAttribute("nivel", (String) session.getAttribute("nivel").toString());
         request.getRequestDispatcher(pagina).forward(request, response);			
 	}
 

@@ -21,7 +21,8 @@ public class AutDao extends GenericDao
 	@Override
 	public <T> T find(String id) 
 	{
-		return (T) session.find(Authorization.class, id);
+		T aut = (T) session.find(Authorization.class, id);
+		return aut;
 	}
 
 	@Override
