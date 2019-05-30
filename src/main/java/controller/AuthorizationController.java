@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 import com.google.gson.Gson;
 
-import dao.AutDao;
 import dao.UsuarioDao;
 
 import javax.servlet.ServletException;

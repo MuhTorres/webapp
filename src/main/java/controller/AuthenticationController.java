@@ -1,13 +1,13 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -16,7 +16,7 @@ import dao.UsuarioDao;
 import model.LogInfo;
 import model.Usuario;
 
-@WebServlet("/login")
+@WebServlet("/autenticar")
 public class AuthenticationController extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
@@ -33,6 +33,7 @@ public class AuthenticationController extends HttpServlet
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{		
+		HttpSession session = request.getSession();
 		Gson gson = new Gson();
 		String titulo = request.getParameter("titulo");
 		String senha = request.getParameter("senha");
@@ -43,21 +44,28 @@ public class AuthenticationController extends HttpServlet
 		if(user != null && user.getSenha().equals(senha))
 		{
 			String descricao = "O usuario de titulo " + titulo + " fez login no sistema com nivel de acesso igual a " + user.getNivel();
-			if(user.getNivel() == 1)
-			{				
-				//url = "votar/votacao.view.jsp";			
+			
+				response.setStatus(HttpServletResponse.SC_OK);	
 				saveLog(titulo, descricao);	
-				//String jsonInString = gson.toJson(user);	
-				request.getRequestDispatcher("votar/votacao.view.jsp?titulo=" + user.getTitulo() + "&nivel=" + user.getNivel()).foward(request, response);
-			}
-			else if(user.getNivel() == 2)
-			{
-				saveLog(titulo, descricao);	
-				String jsonInString = gson.toJson(user);	
-				pw.print(jsonInString);	
-				request.getRequestDispatcher("autorizacao/autorizar.view.jsp?titulo=" + user.getTitulo() + "&nivel=" + user.getNivel()).foward(request, response);
-			}			
+				String userString = gson.toJson(user);	
+				session.setAttribute("usuario", userString);				
+				session.setAttribute("titulo", user.getTitulo());
+				session.setAttribute("nivel", user.getNivel());
+				request.setAttribute("nivel", user.getNivel());
+				request.getRequestDispatcher("dashboards/Dashboard.view.jsp").forward(request, response);						
 
+			dao.destroy();
+			titulo = null;
+			senha = null;
+			user = null;
+			dao = null;
+		}
+		else
+		{
+			String url = request.getHeader("referer");
+			request.getRequestDispatcher("").forward(request, response);	
+			
+			response.getWriter().print("<script>alert('Usuario nao encontrado');</script>");
 			dao.destroy();
 			titulo = null;
 			senha = null;

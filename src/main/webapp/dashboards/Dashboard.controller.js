@@ -1,41 +1,26 @@
 window.onload = function()
- {
-	 btnVotar = document.getElementById('btnVotar');
-	 btnLiberar = document.getElementById('btnLiberar');
-	 btnRelatorio = document.getElementById('btnRelatorio');
-	 
-	 
-     fVotar = document.getElementById('votar');
-     fliberar = document.getElementById('liberar');
-     fRelatorio = document.getElementById('relatorio');
-     
-     fliberar.classList.add('invisivel');
-     fRelatorio.classList.add('invisivel');
-     
-     btnVotar.onclick = function(){
-    	 fVotar.classList.remove('invisivel');
-    	 fVotar.classList.add('visivel');
-    	 fliberar.classList.remove('visivel');
-    	 fliberar.classList.add('invisivel');
-    	 fRelatorio.classList.remove('visivel');
-    	 fRelatorio.classList.add('invisivel');
-     };
-     
-     btnLiberar.onclick = function(){
-    	 fliberar.classList.remove('invisivel');
-    	 fliberar.classList.add('visivel');
-         fVotar.classList.remove('visivel');
-         fVotar.classList.add('invisivel');
-         fRelatorio.classList.remove('visivel');
-    	 fRelatorio.classList.add('invisivel');
-     }; 
-     
-     btnRelatorio.onclick = function(){
-    	 fliberar.classList.remove('visivel');
-    	 fliberar.classList.add('invisivel');
-         fVotar.classList.remove('visivel');
-         fVotar.classList.add('invisivel');
-         fRelatorio.classList.remove('invisivel');
-    	 fRelatorio.classList.add('visivel');
-     }; 
- };
+{
+    var nivel = document.getElementById("nivel").value;
+    if(nivel > 2)
+    {
+        document.getElementById("aut").style.display = "block";
+        document.getElementById("log").style.display = "block";
+    }
+    else if(nivel == 2)
+    {
+        
+        document.getElementById("aut").style.display = "block";
+        document.getElementById("log").style.display = "none";
+    }
+    else
+    {
+        document.getElementById("aut").style.display = "none";
+        document.getElementById("log").style.display = "none";
+    }
+};
+
+function redirect(action)
+{
+    var url = "/" + action + "/" + action + ".view.jsp";
+    document.getElementById("pagina").value = url;
+};

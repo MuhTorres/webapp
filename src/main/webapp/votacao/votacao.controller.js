@@ -4,7 +4,7 @@ function changeInput()
 	var candidato = document.getElementById('idcandidato').value;
 	if(candidato)
 	{
-		document.getElementById('imgCandidato').src = './images/' + candidato + '.jpg';
+		document.getElementById('imgCandidato').src = './votacao/images/' + candidato + '.jpg';
 	}
 };
 
