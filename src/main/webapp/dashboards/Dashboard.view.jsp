@@ -17,7 +17,8 @@
             <button class="confirm" onclick="redirect('votacao')">Votar</button>
 
             <button style="display: none;" id="aut" class="clear" onclick="redirect('autorizar')">Autorizar</button>
-            <button style="display: none;" id="log" class="null" onclick="redirect('log')">Logs</button>
+            <button style="display: none;" id="log" class="other" onclick="redirect('log')">Log de Sessão</button>
+            <button style="display: none;" id="computarVotos" class="other" onclick="redirect('computarVotos')">Computar Votos</button>
 
             <input type="hidden" name="titulo" id="titulo" value="${sessionScope.titulo}"/>
             <input type="hidden" name="nivel" id="nivel" value="${requestScope.nivel}"/>

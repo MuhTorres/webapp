@@ -12,10 +12,9 @@ import javax.persistence.Id;
 @Entity(name="AUTORIZACAO")
 public class Authorization 
 {
+	//@Column(name = "AUT_ID")
+	//private String autorizacao;
 	@Id
-	@Column(name = "AUT_ID")
-	private String autorizacao;
-
 	@Column(name = "USER_ID")
 	private String titulo;
 
@@ -31,14 +30,14 @@ public class Authorization
 	@Column(name = "ALREADY_VOTED")
 	private char jaVotou;
 
-	public String getAutorizacao() {
-		return autorizacao;
-	}
+	// public String getAutorizacao() {
+	// 	return autorizacao;
+	// }
 
-	public void setAutorizacao() {
-		UUID guid = UUID.randomUUID();
-		this.autorizacao = guid.toString();
-	}
+	// public void setAutorizacao() {
+	// 	UUID guid = UUID.randomUUID();
+	// 	this.autorizacao = guid.toString();
+	// }
 
 	public String getTitulo() {
 		return titulo;
