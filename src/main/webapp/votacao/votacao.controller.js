@@ -12,9 +12,7 @@ function changeInput()
 
 function clear()
 {
-	window.location = "/votacao/votacao.view.jsp"
-	document.getElementById('candidato').value = "";
-	document.getElementById('imgCandidato').src = './votacao/images/0.jpg';
+	location.reload();
 };
 
 function vote()

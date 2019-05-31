@@ -20,7 +20,7 @@
     <input type="hidden" id="voto" name="voto" readonly>
     <button class="confirm" onclick="vote()">CONFIRMA</button>    
     <button class="null" onclick="vote()">BRANCO</button>
-    <button class="clear">CORRIGE</button>
+    <!--<button class="clear" onclick="clear()">CORRIGE</button>-->
     <button class="other" onclick="backPage('titulo')">VOLTAR</button>
   </form>
 </div>
