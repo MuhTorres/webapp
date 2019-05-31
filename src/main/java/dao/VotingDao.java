@@ -1,11 +1,11 @@
 package dao;
 
 import java.util.List;
-import model.Authorization;;
+import model.Votos;;
 
-public class AutDao extends GenericDao 
+public class VotingDao extends GenericDao 
 {
-	public AutDao()
+	public VotingDao()
 	{
 		init();
 	}
@@ -13,7 +13,7 @@ public class AutDao extends GenericDao
 	@Override
 	public <T> List<T> findAll()
 	{	
-		List<Authorization> obj = session.createQuery("SELECT a FROM AUTORIZACAO a", Authorization.class).getResultList();	
+		List<Votos> obj = session.createQuery("SELECT v FROM VOTOS v", Votos.class).getResultList();	
 
 		return (List<T>) obj;
 	}
@@ -21,7 +21,7 @@ public class AutDao extends GenericDao
 	@Override
 	public <T> T find(String id) 
 	{
-		return (T) session.find(Authorization.class, id);
+		return null;
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class AutDao extends GenericDao
 		try 
 		{
 			session.getTransaction().begin();
-			session.saveOrUpdate("autorizacao", t);
+			session.persist(t);
 			session.getTransaction().commit();
 		} 
 		catch (Exception e) 

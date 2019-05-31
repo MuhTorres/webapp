@@ -3,23 +3,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <link rel="stylesheet" href="./css/styles.css" type="text/css"/>
+<link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="./css/bootstrap-responsive.min.css" type="text/css"/>
 <script type="text/javascript" src="./votacao/votacao.controller.js"></script>
+<script type="text/javascript" src="./services/service.js"></script>
 <title>Votacao</title>
 </head>
 <body>
 <div>
-  <form class="container">
+  <form class="container" method="POST" action="/Eleicao/votar">
     <h1>Votar</h1>
-    <input type="text" placeholder="numero do candidato" name="candidato" id="idcandidato" oninput="changeInput()">
-    <input type="hidden" id="titulo" value="${sessionScope.titulo}">
+    <input type="text" placeholder="numero do candidato" name="candidato" id="candidato" oninput="changeInput()">
+    <input type="text" id="user" name="user" value="${sessionScope.titulo}" readonly>
 
-    <button class="confirm" onclick="vote(1)">CONFIRMA</button>    
-    <button class="null" onclick="vote(0)">BRANCO</button>
-    <button class="clear" onclick="clear()">CORRIGE</button>
+    <button class="confirm">CONFIRMA</button>    
+    <button class="null">BRANCO</button>
+    <button class="clear">CORRIGE</button>
+    <button class="other" onclick="backPage('titulo')">VOLTAR</button>
   </form>
 </div>
-<img id="imgCandidato" src="./votacao/images/0.png" alt="Cabo Daciolo" style="width:100%">
+<img id="imgCandidato" src="./votacao/images/0.png" style="width:100%">
 </body>
 </html>

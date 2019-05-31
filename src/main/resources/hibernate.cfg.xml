@@ -29,5 +29,6 @@
     <mapping class="model.Usuario" />
     <mapping class="model.Authorization" />
     <mapping class="model.Votos" />
+    <mapping class="model.Candidato" />
   </session-factory>
 </hibernate-configuration>

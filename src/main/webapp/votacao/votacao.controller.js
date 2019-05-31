@@ -1,24 +1,23 @@
 
 function changeInput()
 {
-	var candidato = document.getElementById('idcandidato').value;
+	var candidato = document.getElementById('candidato').value;
 	if(candidato)
 	{
 		document.getElementById('imgCandidato').src = './votacao/images/' + candidato + '.jpg';
 	}
 };
 
-function vote(value)
+// function vote(value)
+// {
+	// value = value === 0 ? 0 : document.getElementById('candidato').value;
+	// document.forms[0].action += "?user="+document.getElementById('user').value + "&candidato=" + value;	
+    // document.forms[0].method = "POST";
+// };
+
+function clear()
 {
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			alert(this.responseText);
-		}
-	};
-	value = value === 0 ? 0 : document.getElementById('idcandidato').value;
-	xhttp.open("POST", "/Eleicao/votar", true);
-	xhttp.setRequestHeader("Content-type", "application/json");
-	xhttp.send("{usuario: " + document.getElementById('titulo').value
-			   + ", candidato: " + value + "}");
+	window.location = "/votacao/votacao.view.jsp"
+	document.getElementById('candidato').value = "";
+	document.getElementById('imgCandidato').src = './votacao/images/0.jpg';
 };

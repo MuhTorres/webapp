@@ -13,7 +13,7 @@ public class LogDao extends GenericDao
 	@Override
 	public <T> List<T> findAll()
 	{	
-		List<LogInfo> obj = session.createQuery("SELECT l FROM LOG l", LogInfo.class).getResultList();	
+		List<LogInfo> obj = session.createQuery("SELECT l FROM LOG l ORDER BY l.actionTime", LogInfo.class).getResultList();	
 
 		return (List<T>) obj;
 	}
@@ -37,5 +37,16 @@ public class LogDao extends GenericDao
 		{
 			session.getTransaction().rollback();
 		}		
+	}
+
+	public void createAndSave(String titulo, String descricao)
+	{
+		LogInfo log = new LogInfo();
+		log.setActionDate();
+		log.setActionTime();
+		log.setLogId();
+		log.setUserId(titulo);
+		log.setDescription(descricao);
+		save(log);
 	}
 }

@@ -8,7 +8,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="./css/bootstrap-responsive.min.css" type="text/css"/>
+<link rel="stylesheet" href="./css/styles.css" type="text/css"/>
+<script type="text/javascript" src="./services/service.js"></script>
 <title>Registros da Cessão</title>
 </head>
 <body>
@@ -22,7 +26,9 @@
 				<td><b>Hora: 	</b>	<%=log.getActionTime() %></td>
 				<td><b>Descrição:</b> 	<%=log.getDescription() %></td>
 	        </tr>
-	    <%} %>
+		<%} %>
+		
+		<button class="other" onclick="goTo()">VOLTAR</button>
 	</table>
 </body>
 </html>

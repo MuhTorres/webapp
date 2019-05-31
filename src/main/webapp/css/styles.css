@@ -6,9 +6,18 @@ body, html {
   box-sizing: border-box;
 }
 
+@font-face
+{
+  font-family: HelveticaNeueLTProRoman;
+  src: url('./fontes/HelveticaNeueLTPro-Roman.eot'),
+       url('./fontes/HelveticaNeueLTPro-Roman.otf'),
+       url('./fontes/HelveticaNeueLTPro-Roman.woff'),
+       url('./fontes/helveticaneueltpro-roman-webfont.eot');	 	 	 
+}
+
 /* Add styles to the form container */
 .container {
-  position: absolute;
+  position: absolute; 
   margin: auto;
   max-width: 300px;
   padding: 16px;
@@ -29,6 +38,10 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
 
+h1
+{
+  font-family: HelveticaNeueLTProRoman;
+}
 /* Set a style for the submit button */
 .confirm {
   background-color: #4CAF50;

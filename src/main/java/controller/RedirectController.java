@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.LogDao;
-import model.LogInfo;
+import model.Usuario;
 
 @WebServlet("/redirect")
 public class RedirectController extends HttpServlet 
@@ -21,32 +21,36 @@ public class RedirectController extends HttpServlet
     {
         super();
     }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		
-	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{		
 		HttpSession session = request.getSession();
 		String pagina = request.getParameter("pagina");
-        String titulo = (String) session.getAttribute("titulo");
-        saveLog(titulo, "O usuário foi redirecionado para a seguinte url " + pagina);
+		String titulo = (String) session.getAttribute("titulo");
+		String nivel = (String) session.getAttribute("nivel");
+		Usuario user = (Usuario) session.getAttribute("user");
 
-        request.getRequestDispatcher(pagina).forward(request, response);			
-	}
-
-	public void saveLog(String titulo, String descricao)
-	{
-		LogDao lDao = new LogDao();
-		LogInfo log = new LogInfo();
-		log.setActionDate();
-		log.setActionTime();
-		log.setLogId();
-		log.setUserId(titulo);
-		log.setDescription(descricao);
-		lDao.saveLog(log);
-		lDao.destroy();
+		try 
+		{						
+			response.setContentType("application/json; charset=utf-8");
+			new LogDao().createAndSave(titulo, "O usuário foi redirecionado para a seguinte url " + pagina);	
+			session.setAttribute("titulo", titulo);
+			session.setAttribute("nivel", nivel);
+			request.setAttribute("titulo", user.getTitulo());
+			request.setAttribute("nivel", user.getNivel());
+			response.setStatus(HttpServletResponse.SC_OK);	
+			request.getRequestDispatcher(pagina).forward(request, response);		
+			//response.getWriter().flush();	
+		} 
+		catch (Exception e) 
+		{
+			new LogDao().createAndSave(titulo, e.getMessage());
+			request.getRequestDispatcher(pagina).forward(request, response);	
+		}
+		finally
+		{
+			response.getWriter().flush();	
+			destroy();	
+		}		
 	}
 }

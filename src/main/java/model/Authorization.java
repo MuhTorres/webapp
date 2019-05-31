@@ -3,7 +3,6 @@ package model;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +10,7 @@ import javax.persistence.Id;
 
 @Entity(name="AUTORIZACAO")
 public class Authorization 
-{
+{	
 	@Id
 	@Column(name = "AUT_ID")
 	private String autorizacao;
@@ -35,9 +34,8 @@ public class Authorization
 		return autorizacao;
 	}
 
-	public void setAutorizacao() {
-		UUID guid = UUID.randomUUID();
-		this.autorizacao = guid.toString();
+	public void setAutorizacao() {		
+		this.autorizacao = this.titulo;
 	}
 
 	public String getTitulo() {

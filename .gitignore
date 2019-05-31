@@ -79,7 +79,6 @@ StyleCopReport.xml
 *.tlh
 *.tmp
 *.tmp_proj
-*.log
 *.vspscc
 *.vssscc
 .builds
@@ -333,6 +332,8 @@ ASALocalRun/
 
 .gradle/
 .settings/
+.vscode/
+bin/
 build/
 gradle/
 gradlew.bat

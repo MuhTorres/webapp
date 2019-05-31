@@ -4,18 +4,21 @@ window.onload = function()
     if(nivel > 2)
     {
         document.getElementById("aut").style.display = "block";
-        document.getElementById("log").style.display = "block";
+        document.getElementById("logs").style.display = "block";
+        document.getElementById("computarVotos").style.display = "block";
     }
     else if(nivel == 2)
     {
         
         document.getElementById("aut").style.display = "block";
-        document.getElementById("log").style.display = "none";
+        document.getElementById("logs").style.display = "none";    
+        document.getElementById("computarVotos").style.display = "none";
     }
     else
-    {
+    {        
         document.getElementById("aut").style.display = "none";
-        document.getElementById("log").style.display = "none";
+        document.getElementById("computarVotos").style.display = "none";
+        document.getElementById("logs").style.display = "none";
     }
 };
 
