@@ -18,29 +18,23 @@ USE `projeto`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `municipios`
+-- Table structure for table `log`
 --
 
-DROP TABLE IF EXISTS `municipios`;
+DROP TABLE IF EXISTS `log`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `municipios` (
-  `COD_MUNICIPIO` int(5) NOT NULL AUTO_INCREMENT,
-  `MUNICIPIO` varchar(50) NOT NULL,
-  `UF` varchar(2) NOT NULL,
-  PRIMARY KEY (`COD_MUNICIPIO`)
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `log` (
+  `LOG_ID` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `USER_ID` varchar(10) NOT NULL,
+  `ACTION_TIME` datetime DEFAULT NULL,
+  `ACTION_DATE` date DEFAULT NULL,
+  `LOG_DESCRIPTION` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`LOG_ID`),
+  KEY `USER_ID` (`USER_ID`),
+  CONSTRAINT `log_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `info_usuario` (`COD_TITULO`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `municipios`
---
-
-LOCK TABLES `municipios` WRITE;
-/*!40000 ALTER TABLE `municipios` DISABLE KEYS */;
-INSERT INTO `municipios` VALUES (123,'SÃO JOSÉ DOS CAMPOS','SP');
-/*!40000 ALTER TABLE `municipios` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -51,4 +45,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-27 13:09:44
+-- Dump completed on 2019-05-31  7:11:10

@@ -18,29 +18,26 @@ USE `projeto`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `zona_eleitoral`
+-- Table structure for table `autorizacao`
 --
 
-DROP TABLE IF EXISTS `zona_eleitoral`;
+DROP TABLE IF EXISTS `autorizacao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `zona_eleitoral` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `COD_ZONA` int(3) NOT NULL,
-  `UF` varchar(50) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `autorizacao` (
+  `AUT_ID` varchar(50) NOT NULL,
+  `USER_ID` varchar(10) NOT NULL,
+  `AUT_BY` varchar(10) NOT NULL,
+  `ACTION_DATE` date DEFAULT NULL,
+  `CAN_VOTE` enum('Y','N') DEFAULT 'N',
+  `ALREADY_VOTED` enum('Y','N') DEFAULT 'N',
+  PRIMARY KEY (`AUT_ID`),
+  KEY `USER_ID` (`USER_ID`),
+  KEY `AUT_BY` (`AUT_BY`),
+  CONSTRAINT `autorizacao_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `info_usuario` (`COD_TITULO`),
+  CONSTRAINT `autorizacao_ibfk_2` FOREIGN KEY (`AUT_BY`) REFERENCES `info_usuario` (`COD_TITULO`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `zona_eleitoral`
---
-
-LOCK TABLES `zona_eleitoral` WRITE;
-/*!40000 ALTER TABLE `zona_eleitoral` DISABLE KEYS */;
-INSERT INTO `zona_eleitoral` VALUES (1,123,'SP'),(2,132,'SC');
-/*!40000 ALTER TABLE `zona_eleitoral` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -51,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-27 13:09:44
+-- Dump completed on 2019-05-31  7:11:11

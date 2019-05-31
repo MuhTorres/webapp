@@ -18,12 +18,19 @@ USE `projeto`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping events for database 'projeto'
+-- Table structure for table `municipios`
 --
 
---
--- Dumping routines for database 'projeto'
---
+DROP TABLE IF EXISTS `municipios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `municipios` (
+  `COD_MUNICIPIO` int(5) NOT NULL AUTO_INCREMENT,
+  `MUNICIPIO` varchar(50) NOT NULL,
+  `UF` varchar(2) NOT NULL,
+  PRIMARY KEY (`COD_MUNICIPIO`)
+) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -34,4 +41,4 @@ USE `projeto`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-27 13:09:45
+-- Dump completed on 2019-05-31  7:11:11

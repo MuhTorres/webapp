@@ -18,29 +18,23 @@ USE `projeto`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `candidatos`
+-- Table structure for table `votos`
 --
 
-DROP TABLE IF EXISTS `candidatos`;
+DROP TABLE IF EXISTS `votos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `candidatos` (
-  `NUMERO` int(11) NOT NULL,
-  `NOME` varchar(20) NOT NULL,
-  `VOTOS` int(11) NOT NULL,
-  PRIMARY KEY (`NUMERO`)
+CREATE TABLE `votos` (
+  `VOTO_ID` int(5) NOT NULL AUTO_INCREMENT,
+  `USER_ID` varchar(10) NOT NULL,
+  `CAND_ID` int(4) NOT NULL,
+  PRIMARY KEY (`VOTO_ID`),
+  UNIQUE KEY `USER_ID` (`USER_ID`),
+  KEY `CAND_ID` (`CAND_ID`),
+  CONSTRAINT `votos_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `info_usuario` (`COD_TITULO`),
+  CONSTRAINT `votos_ibfk_2` FOREIGN KEY (`CAND_ID`) REFERENCES `candidatos` (`NUMERO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `candidatos`
---
-
-LOCK TABLES `candidatos` WRITE;
-/*!40000 ALTER TABLE `candidatos` DISABLE KEYS */;
-INSERT INTO `candidatos` VALUES (0,'BRANCO',0),(1,'NULO',0),(13,'LULA',0),(17,'BOLSONAURO',0),(50,'BOULOS',0),(51,'DACIOLO',1);
-/*!40000 ALTER TABLE `candidatos` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -51,4 +45,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-27 13:09:44
+-- Dump completed on 2019-05-31  7:11:10

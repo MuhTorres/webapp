@@ -18,35 +18,30 @@ USE `projeto`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `autorizacao`
+-- Table structure for table `info_usuario`
 --
 
-DROP TABLE IF EXISTS `autorizacao`;
+DROP TABLE IF EXISTS `info_usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `autorizacao` (
-  `AUT_ID` varchar(50) NOT NULL,
-  `USER_ID` varchar(10) NOT NULL,
-  `AUT_BY` varchar(10) NOT NULL,
-  `ACTION_DATE` date DEFAULT NULL,
-  `CAN_VOTE` enum('Y','N') DEFAULT 'N',
-  `ALREADY_VOTED` enum('Y','N') DEFAULT 'N',
-  PRIMARY KEY (`AUT_ID`),
-  KEY `USER_ID` (`USER_ID`),
-  KEY `AUT_BY` (`AUT_BY`),
-  CONSTRAINT `autorizacao_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `info_usuario` (`COD_TITULO`),
-  CONSTRAINT `autorizacao_ibfk_2` FOREIGN KEY (`AUT_BY`) REFERENCES `info_usuario` (`COD_TITULO`)
+CREATE TABLE `info_usuario` (
+  `COD_TITULO` varchar(12) NOT NULL,
+  `DATA_EMISSAO` date NOT NULL,
+  `ZONA` varchar(3) DEFAULT NULL,
+  `SECAO_ELEITORAL` varchar(4) DEFAULT NULL,
+  `NOME` varchar(100) NOT NULL,
+  `DATA_NASC` date NOT NULL,
+  `NIVEL` int(1) DEFAULT NULL,
+  `senha` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `AUT_ID` varchar(255) NOT NULL,
+  `ACTION_DATE` datetime DEFAULT NULL,
+  `AUT_BY` varchar(255) DEFAULT NULL,
+  `CAN_VOTE` char(1) DEFAULT NULL,
+  `USER_ID` varchar(255) DEFAULT NULL,
+  `ALREADY_VOTED` char(1) DEFAULT NULL,
+  PRIMARY KEY (`COD_TITULO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `autorizacao`
---
-
-LOCK TABLES `autorizacao` WRITE;
-/*!40000 ALTER TABLE `autorizacao` DISABLE KEYS */;
-/*!40000 ALTER TABLE `autorizacao` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -57,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-27 13:09:45
+-- Dump completed on 2019-05-31  7:11:11

@@ -18,28 +18,12 @@ USE `projeto`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `nivel`
+-- Dumping events for database 'projeto'
 --
 
-DROP TABLE IF EXISTS `nivel`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `nivel` (
-  `NIVEL` int(1) NOT NULL,
-  `DESCRICAO` varchar(20) NOT NULL,
-  PRIMARY KEY (`NIVEL`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
 --
--- Dumping data for table `nivel`
+-- Dumping routines for database 'projeto'
 --
-
-LOCK TABLES `nivel` WRITE;
-/*!40000 ALTER TABLE `nivel` DISABLE KEYS */;
-INSERT INTO `nivel` VALUES (1,'USUÁRIO COMUM'),(2,'MESÁRIO'),(3,'CHEFE DE SEÇÃO');
-/*!40000 ALTER TABLE `nivel` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -50,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-27 13:09:43
+-- Dump completed on 2019-05-31  7:11:12
