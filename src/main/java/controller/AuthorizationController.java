@@ -123,7 +123,8 @@ public class AuthorizationController extends HttpServlet
 			authorization.setTitulo(titulo);
 			authorization.setAutorizacao();
 			dao.save(authorization);			
-			new LogDao().createAndSave(autBy, "O usuario autorizou o titulo " + titulo + " para votar!");
+			String description = "O usuario autorizou o titulo " + String.valueOf(authorization.getTitulo()) + " para votar!";
+			new LogDao().createAndSave(autBy, description);
 			request.getRequestDispatcher("/autorizar/autorizar.view.jsp").forward(request, response);			
 		}
 	}

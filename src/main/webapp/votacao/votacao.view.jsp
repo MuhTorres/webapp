@@ -17,8 +17,9 @@
     <input type="text" placeholder="numero do candidato" name="candidato" id="candidato" oninput="changeInput()">
     <input type="text" id="user" name="user" value="${sessionScope.titulo}" readonly>
 
-    <button class="confirm">CONFIRMA</button>    
-    <button class="null">BRANCO</button>
+    <input type="hidden" id="voto" name="voto" readonly>
+    <button class="confirm" onclick="vote()">CONFIRMA</button>    
+    <button class="null" onclick="vote()">BRANCO</button>
     <button class="clear">CORRIGE</button>
     <button class="other" onclick="backPage('titulo')">VOLTAR</button>
   </form>

@@ -1,7 +1,7 @@
 package dao;
 
 import java.util.List;
-import model.Votos;;
+import model.Votos;
 
 public class VotingDao extends GenericDao 
 {

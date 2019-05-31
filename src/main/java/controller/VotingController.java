@@ -27,12 +27,10 @@ public class VotingController extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		HttpSession session = request.getSession();
-		session.setMaxInactiveInterval(500);		
-		response.setContentType("application/json; charset=utf-8");
-		String titulo = (String) request.getAttribute("user");
-		String candidato = (String) request.getAttribute("candidato");
-		//if(titulo == null) titulo = "";
-		System.out.println(titulo);
+		String titulo = (String) request.getParameter("user");
+		String candidato = (String) request.getParameter("voto");
+		if(titulo == null) titulo = (String) session.getAttribute("titulo");
+
 		Authorization aut = new AutDao().find(titulo);
 
 		if(aut != null)
@@ -55,14 +53,14 @@ public class VotingController extends HttpServlet
 				session.setAttribute("nivel", nivel);
 				
 				request.getRequestDispatcher("/dashboards/Dashboard.view.jsp").forward(request, response);	
-				//response.getWriter().flush();	
+				response.getWriter().flush();	
 			}
 			else
 			{
 				new LogDao().createAndSave(titulo, "O usuario tentou votar mas nao esta autorizado!");
 				response.getWriter().println("<script type=\"text/javascript\"> alert('Voce nao esta autorizado a votar!'); </script>");	
 				request.getRequestDispatcher("/dashboards/Dashboard.view.jsp").forward(request, response);	
-				//response.getWriter().flush();	
+				response.getWriter().flush();	
 			}
 		}
 		else
@@ -70,7 +68,7 @@ public class VotingController extends HttpServlet
 			new LogDao().createAndSave(titulo, "O usuario tentou votar mas nao esta autorizado!2");
 			response.getWriter().print("<script type=\"text/javascript\"> alert('Voce nao esta autorizado a votar!'); </script>");		
 			request.getRequestDispatcher("/dashboards/Dashboard.view.jsp").forward(request, response);	
-			//response.getWriter().flush();	
+			response.getWriter().flush();	
 		}
 	}
 }

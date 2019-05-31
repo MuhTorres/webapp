@@ -31,7 +31,7 @@
         </div>
         <button class="clear" onclick="validar()">Validar</button>
         <button class="confirm" onclick="autorizar()">Autorizar</button>        
-        <button class="other" onclick="backPage('usuario')">Voltar</button>
+        <button class="other" onclick="backPage('func')">Voltar</button>
     </form>
 </body>
 </html>

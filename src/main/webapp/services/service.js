@@ -2,6 +2,7 @@ window.history.forward(1);
 
 function backPage(valueName)
 {
+    valueName += '';
     var url = "&";
     url += valuename + "=" + document.getElementById(valueName).value;
     var nivel = document.getElementById("nivel").value;
