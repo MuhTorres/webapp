@@ -11,7 +11,7 @@
 
    <!-- entidade mapeada -->
    <class>model.Usuario</class>
-   <class>model.Log</class>
+   <class>model.LogInfo</class>
    <class>model.Authorization</class>
    <class>model.Votos</class>
 

@@ -1,52 +1,17 @@
-function doVote(requestData) {
-    var me = this;
-    global.request({
-        type: 'POST',
-        url: String.format('/Eleicao/votar'),
-        data: JSON.stringify(requestData.data),
-        dataType: 'json',
-        context: me,
-        async: false,
-        error: function (xhr, status, error) {
-            requestData.failure.call(requestData.scope, { msg: treatError.getErrorMsg(xhr, status, error) });
-        },
-        success: function (response) {
-            requestData.success.call(requestData.scope, response);
-        }
-    });
-};
+window.history.forward(1);
 
-function authorize(requestData) {
-    var me = this;
-    global.request({
-        type: 'POST',
-        url: String.format('/Eleicao/autorizar'),
-        data: JSON.stringify(requestData.data),
-        dataType: 'json',
-        context: me,
-        async: false,
-        error: function (xhr, status, error) {
-            requestData.failure.call(requestData.scope, { msg: treatError.getErrorMsg(xhr, status, error) });
-        },
-        success: function (response) {
-            requestData.success.call(requestData.scope, response);
-        }
-    });
-};
+function backPage(valueName)
+{
+    valueName += '';
+    var url = "&";
+    
 
-function warehouse(requestData) {
-    var me = this;
-    global.request({
-        type: 'GET',
-        url: String.format('/Eleicao/autorizar', requestData.data),
-        dataType: 'json',
-        context: me,
-        async: false,
-        error: function (xhr, status, error) {
-            requestData.failure.call(requestData.scope, { msg: treatError.getErrorMsg(xhr, status, error) });
-        },
-        success: function (response) {
-            requestData.success.call(requestData.scope, response);
-        }
-    });
-};
+    document.forms[0].action = "/Eleicao/redirect?pagina=/dashboards/Dashboard.view.jsp" + url;
+    document.forms[0].method = "POST";
+
+}
+
+function goTo()
+{
+    window.location = "/Eleicao/redirect?pagina=/dashboards/Dashboard.view.jsp";
+}

@@ -18,40 +18,19 @@ USE `projeto`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `info_usuario`
+-- Table structure for table `zona_eleitoral`
 --
 
-DROP TABLE IF EXISTS `info_usuario`;
+DROP TABLE IF EXISTS `zona_eleitoral`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `info_usuario` (
-  `COD_TITULO` varchar(12) NOT NULL,
-  `DATA_EMISSAO` date NOT NULL,
-  `ZONA` varchar(3) DEFAULT NULL,
-  `SECAO_ELEITORAL` varchar(4) DEFAULT NULL,
-  `NOME` varchar(100) NOT NULL,
-  `DATA_NASC` date NOT NULL,
-  `NIVEL` int(1) DEFAULT NULL,
-  `senha` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `AUT_ID` varchar(255) NOT NULL,
-  `ACTION_DATE` datetime DEFAULT NULL,
-  `AUT_BY` varchar(255) DEFAULT NULL,
-  `CAN_VOTE` char(1) DEFAULT NULL,
-  `USER_ID` varchar(255) DEFAULT NULL,
-  `ALREADY_VOTED` char(1) DEFAULT NULL,
-  PRIMARY KEY (`COD_TITULO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `zona_eleitoral` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `COD_ZONA` int(3) NOT NULL,
+  `UF` varchar(50) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `info_usuario`
---
-
-LOCK TABLES `info_usuario` WRITE;
-/*!40000 ALTER TABLE `info_usuario` DISABLE KEYS */;
-INSERT INTO `info_usuario` VALUES ('123456','2018-01-15','1','123','Mauricio de Souza','2000-03-03',1,'123456','',NULL,NULL,NULL,NULL,NULL),('654321','2017-03-10','1','123','JOAO PAULO','1989-12-12',2,'654321','',NULL,NULL,NULL,NULL,NULL),('987654','2016-02-05','1','123','Vladmir Temer','1945-10-10',3,'987654','',NULL,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `info_usuario` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -62,4 +41,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-27 13:09:44
+-- Dump completed on 2019-05-31  7:11:11

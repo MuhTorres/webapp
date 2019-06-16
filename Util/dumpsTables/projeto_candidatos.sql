@@ -18,28 +18,19 @@ USE `projeto`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `unidade_federacao`
+-- Table structure for table `candidatos`
 --
 
-DROP TABLE IF EXISTS `unidade_federacao`;
+DROP TABLE IF EXISTS `candidatos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `unidade_federacao` (
-  `UF` varchar(2) NOT NULL,
-  `DESCRICAO` varchar(50) NOT NULL,
-  PRIMARY KEY (`UF`)
+CREATE TABLE `candidatos` (
+  `NUMERO` int(11) NOT NULL,
+  `NOME` varchar(20) NOT NULL,
+  `VOTOS` int(11) NOT NULL,
+  PRIMARY KEY (`NUMERO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `unidade_federacao`
---
-
-LOCK TABLES `unidade_federacao` WRITE;
-/*!40000 ALTER TABLE `unidade_federacao` DISABLE KEYS */;
-INSERT INTO `unidade_federacao` VALUES ('BA','BAHIA'),('CE','CEARÁ'),('SC','SANTA CATARINA'),('SP','SÃO PAULO');
-/*!40000 ALTER TABLE `unidade_federacao` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -50,4 +41,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-27 13:09:43
+-- Dump completed on 2019-05-31  7:11:11
